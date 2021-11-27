@@ -14,10 +14,10 @@ def get_input(word_type, first_occurrence, tense=None):
 
 noun_1 = get_input("noun", True)
 noun_2 = get_input("noun", False)
-adjective_1 = input("Please enter an adjective: ")
-adjective_2 = input("Please enter another adjective: ")
-adjective_3 = input("Please enter another adjective: ")
-verb = input("Please enter a verb in the past tense: ")
+adjective_1 = get_input("adjective", True)
+adjective_2 = get_input("adjective", False)
+adjective_3 = get_input("adjective", False)
+verb = get_input("verb", True, tense="past")
 
 
 
