@@ -6,12 +6,12 @@ adjective_3 = input("Please enter another adjective: ")
 verb = input("Please enter a verb in the past tense: ")
 
 print(
-    "The {}, {}, {} {} over the {} {}.".format(
-        noun_1,
-        noun_2,
+    "The {} {} {} {} over the {} {}.".format(
         adjective_1,
-        adjective_2,
         adjective_3,
-        verb
+        noun_1,
+        verb,
+        adjective_2,
+        noun_2  
     )
 )
