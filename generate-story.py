@@ -17,7 +17,7 @@ noun_2 = get_input("noun", False)
 adjective_1 = get_input("adjective", True)
 adjective_2 = get_input("adjective", False)
 adjective_3 = get_input("adjective", False)
-verb = get_input("verb in the past tense", True)
+verb = get_input("verb", True, tense="past")
 
 
 
