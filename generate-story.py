@@ -19,15 +19,15 @@ class Paragraph:
         """Given the text, return the quantity of each different type of word required """
         requirements = {}
         for word_type in RESOURCES_MAP:
-            requirements[word_type] = self.paragraph_text.count(RESOURCES_MAP[word_type])
+            requirements[word_type] = self.paragraph_text.count(RESOURCES_MAP.get(word_type))
         return requirements
 
     def generate_text(self):
         """Replace the placeholders with words from the word store to generate the final text of the paragraph"""
         updated_text = self.paragraph_text
         for word_type in RESOURCES_MAP.keys():
-            while updated_text.find(RESOURCES_MAP[word_type]) >= 0:
-                location = updated_text.find(RESOURCES_MAP[word_type])
+            while updated_text.find(RESOURCES_MAP.get(word_type)) >= 0:
+                location = updated_text.find(RESOURCES_MAP.get(word_type))
                 fetched_word = self.fetch_word(word_type)
                 updated_text = updated_text[:location] + fetched_word + updated_text[location + len(RESOURCES_MAP[word_type]):]
 
@@ -35,7 +35,7 @@ class Paragraph:
 
     def fetch_word(self, word_type):
         """Fetches a word of the required type from the local word store"""
-        return WORD_STORE[word_type].pop()
+        return WORD_STORE.get(word_type).pop()
 
 def get_input(word_type, tense=None):
     """Prompt the user to input a word, and return the word they input"""
@@ -52,16 +52,16 @@ def build_word_store(requirements):
     past_verbs = []
     present_verbs = []
 
-    for i in range(requirements["nouns"]):
+    for i in range(requirements.get("nouns")):
         nouns.append(get_input("noun"))
 
-    for i in range(requirements["adjectives"]):
+    for i in range(requirements.get("adjectives")):
         adjectives.append(get_input("adjective"))
 
-    for i in range(requirements["past-verbs"]):
+    for i in range(requirements.get("past-verbs")):
         past_verbs.append(get_input("verb", tense="past"))
 
-    for i in range(requirements["present-verbs"]):
+    for i in range(requirements.get("present-verbs")):
         present_verbs.append(get_input("verb", tense="present"))
 
     # Add the lists of nouns, adjectives and verbs as values for the keys "nouns", "adjectives" and "verbs" in the dictionary
